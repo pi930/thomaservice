@@ -23,8 +23,8 @@ RUN composer install --no-dev --optimize-autoloader
 # Laravel permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
 
-# Copy nginx config
-COPY ./docker/nginx.conf /etc/nginx/nginx.conf
+COPY ./Docker/nginx.conf /etc/nginx/nginx.conf
+
 
 # Expose port
 EXPOSE 80
