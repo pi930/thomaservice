@@ -20,9 +20,6 @@ COPY . .
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Build Vite assets
-RUN npm install && npm run build
-
 # Laravel permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
 
