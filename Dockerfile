@@ -20,15 +20,18 @@ COPY . .
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
+# Build Vite assets
+RUN npm install && npm run build
+
 # Laravel permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
 
+# Copy Nginx config
 COPY ./Docker/nginx.conf /etc/nginx/nginx.conf
-
 
 # Expose port
 EXPOSE 80
 
-# Start Nginx + PHP-FPM
-CMD service nginx start && php-fpm
+# Start Nginx + PHP-FPM properly
+CMD ["sh", "-c", "php-fpm & nginx -g 'daemon off;'"]
 
