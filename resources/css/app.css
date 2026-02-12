@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a {
+    opacity: 1 !important;
+    filter: none !important;
+    color: unset !important;
+}
+
