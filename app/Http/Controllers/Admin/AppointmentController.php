@@ -69,6 +69,18 @@ public function store(Request $request)
             'role' => 'client',
         ]);
     }
+    // Empêcher les doublons
+$exists = Appointment::where('date', $request->date)
+    ->where('time', $request->time)
+    ->where('status', '!=', 'cancelled')
+    ->exists();
+
+if ($exists) {
+    return back()->withErrors([
+        'time' => 'Ce créneau est déjà réservé.'
+    ]);
+}
+
 
     // Créer le rendez-vous
     Appointment::create([

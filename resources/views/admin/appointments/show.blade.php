@@ -58,7 +58,7 @@
 
                             @foreach ($days as $index => $day)
                                 @php
-                                    $date = now()->startOfWeek()->addDays($index)->format('Y-m-d');
+                                   $date = now()->startOfWeek()->addDays($index)->toDateString();
                                     $rdv = $appointments->where('date', $date)->where('time', $hour)->first();
                                 @endphp
 

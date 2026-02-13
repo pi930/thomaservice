@@ -25,9 +25,11 @@ class UserAppointmentController extends Controller
         'time' => 'required'
     ]);
 
-    $exists = Appointment::where('date', $request->date)
-        ->where('time', $request->time)
-        ->exists();
+   $exists = Appointment::where('date', $request->date)
+    ->where('time', $request->time)
+    ->where('status', '!=', 'cancelled')
+    ->exists();
+
 
     if ($exists) {
         return back()->withErrors([
