@@ -39,14 +39,14 @@ class AppointmentController extends Controller
 
         // Charger tous les rendez-vous de la semaine
         $appointments = Appointment::with(['client', 'service'])
-            ->whereRaw("date(date) BETWEEN ? AND ?", [
+           ->whereRaw("CAST(date AS DATE) BETWEEN ? AND ?", [
     $start->toDateString(),
     $start->copy()->addDays(6)->toDateString()
             ])
 
             ->where('status', '!=', 'cancelled')
             ->get();
-
+dd($appointments->pluck('date', 'time'));
         // Heures affichées dans le planning
         $hours = [
             '09:00','10:00','11:00','12:00',
