@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-8 max-w-xl mx-auto px-4 space-y-6">
+    <div class="py-8 max-w-4xl mx-auto px-4 space-y-6">
 
         {{-- Informations du rendez-vous --}}
         <div class="bg-white p-6 rounded shadow">
@@ -41,13 +41,18 @@
         <div class="bg-white p-6 rounded shadow mt-8">
             <h3 class="text-lg font-semibold mb-4">Planning de la semaine</h3>
 
-            <table class="w-full border-collapse">
+            <table class="w-full border-collapse text-sm">
                 <thead>
                     <tr>
                         <th class="border p-2">Heure</th>
+
                         @foreach ($days as $day)
-                            <th class="border p-2">{{ $day }}</th>
+                            <th class="border p-2 capitalize">
+                                {{ $day['label'] }}<br>
+                                <span class="text-gray-500 text-xs">{{ $day['date'] }}</span>
+                            </th>
                         @endforeach
+
                     </tr>
                 </thead>
 
@@ -56,21 +61,27 @@
                         <tr>
                             <td class="border p-2 font-semibold">{{ $hour }}</td>
 
-                            @foreach ($days as $index => $day)
+                            @foreach ($days as $day)
                                 @php
-                                   $date = now()->startOfWeek()->addDays($index)->toDateString();
-                                    $rdv = $appointments->where('date', $date)->where('time', $hour)->first();
+                                    $rdv = $appointments
+                                        ->where('date', $day['date'])
+                                        ->where('time', $hour)
+                                        ->first();
                                 @endphp
 
-                                <td class="border p-2 text-center @if($rdv) bg-indigo-200 @endif">
+                                <td class="border p-2 text-center
+                                    @if($rdv) bg-indigo-200 @endif">
+
                                     @if($rdv)
-                                       {{ $rdv->client->name ?? 'Client inconnu' }}<br>
-                                       {{ $rdv->service->name ?? 'Service supprimé' }}
+                                        <strong>{{ $rdv->client->name }}</strong><br>
+                                        <span class="text-xs">{{ $rdv->service->name }}</span>
                                     @else
                                         —
                                     @endif
+
                                 </td>
                             @endforeach
+
                         </tr>
                     @endforeach
                 </tbody>
