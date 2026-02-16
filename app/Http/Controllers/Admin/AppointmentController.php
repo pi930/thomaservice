@@ -46,7 +46,7 @@ class AppointmentController extends Controller
 
             ->where('status', '!=', 'cancelled')
             ->get();
-dd($appointments->pluck('date', 'time'));
+
         // Heures affichées dans le planning
         $hours = [
             '09:00','10:00','11:00','12:00',
