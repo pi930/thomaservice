@@ -42,8 +42,7 @@ class AppointmentController extends Controller
             ->whereRaw("date(date) BETWEEN ? AND ?", [
     $start->toDateString(),
     $start->copy()->addDays(6)->toDateString()
-])
-dd($appointments);
+            ])
 
             ->where('status', '!=', 'cancelled')
             ->get();
