@@ -39,10 +39,12 @@ class AppointmentController extends Controller
 
         // Charger tous les rendez-vous de la semaine
         $appointments = Appointment::with(['client', 'service'])
-            ->whereBetween('date', [
-                $start->toDateString(),
-                $start->copy()->addDays(6)->toDateString()
-            ])
+            ->whereRaw("date(date) BETWEEN ? AND ?", [
+    $start->toDateString(),
+    $start->copy()->addDays(6)->toDateString()
+])
+dd($appointments);
+
             ->where('status', '!=', 'cancelled')
             ->get();
 
