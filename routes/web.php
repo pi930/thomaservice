@@ -31,3 +31,16 @@ Route::middleware(['admin'])->group(function () {
 });
 
 Route::post('/contact', [ContactController::class, 'send']);
+Route::get('/debug', function () {
+    try {
+        // Test APP_KEY
+        $key = config('app.key');
+
+        // Test DB
+        DB::connection()->getPdo();
+
+        return "APP_KEY: $key\nDB: OK";
+    } catch (\Exception $e) {
+        return $e->getMessage();
+    }
+});
