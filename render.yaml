@@ -5,23 +5,3 @@ services:
     plan: free
     branch: master
     autoDeploy: true
-    envVars:
-      - key: APP_ENV
-        value: production
-      - key: APP_DEBUG
-        value: false
-      - key: APP_KEY
-        sync: false
-      - key: DB_CONNECTION
-        value: pgsql
-      - key: DB_HOST
-        value: dpg-d9nkldvlk1mc738c5oo0-a
-      - key: DB_PORT
-        value: 5432
-      - key: DB_DATABASE
-        value: aliciahomeservice_db_sf47
-      - key: DB_USERNAME
-        value: aliciahomeservice_db_sf47_user
-      - key: DB_PASSWORD
-        sync: false
-

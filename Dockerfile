@@ -6,11 +6,11 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# ---- PHP-FPM Stage ----
+# ---- PHP-FPM + Nginx ----
 FROM php:8.3-fpm
 
 RUN apt-get update && apt-get install -y \
-    git curl zip unzip libpq-dev nginx \
+    git curl zip unzip libpq-dev nginx supervisor \
     && docker-php-ext-install pdo pdo_pgsql
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -27,7 +27,7 @@ RUN php artisan config:cache
 RUN php artisan route:cache
 RUN php artisan view:cache
 
-# Nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-CMD service nginx start && php-fpm
+CMD ["/usr/bin/supervisord"]
