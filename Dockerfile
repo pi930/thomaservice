@@ -22,10 +22,8 @@ COPY . .
 COPY --from=node_builder /app/public ./public
 
 RUN composer install --no-dev --optimize-autoloader
+# force rebuild
 
-RUN php artisan config:cache
-RUN php artisan route:cache
-RUN php artisan view:cache
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
