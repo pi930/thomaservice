@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pdo_pgsql
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+# force rebuild
 
 WORKDIR /var/www/html
 
@@ -22,8 +23,6 @@ COPY . .
 COPY --from=node_builder /app/public ./public
 
 RUN composer install --no-dev --optimize-autoloader
-# force rebuild
-
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
