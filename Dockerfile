@@ -28,13 +28,23 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # ---- Fix PHP-FPM listen directives ----
 # On remplace TOUTES les formes possibles de "listen"
+# ---- Fix PHP-FPM listen directives ----
 RUN sed -i 's/listen = 9000/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/www.conf \
  && sed -i 's/listen=9000/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/www.conf \
  && sed -i 's/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/www.conf \
+ && sed -i 's/listen = \/run\/php\/php8.3-fpm.sock/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/www.conf \
+ && sed -i 's/listen = \/run\/php\/php-fpm.sock/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/www.conf \
+ && sed -i 's/listen = \/var\/run\/php\/php8.3-fpm.sock/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/www.conf \
  && sed -i 's/listen = 9000/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.conf \
  && sed -i 's/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.conf \
+ && sed -i 's/listen = \/run\/php\/php8.3-fpm.sock/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.conf \
+ && sed -i 's/listen = \/run\/php\/php-fpm.sock/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.conf \
+ && sed -i 's/listen = \/var\/run\/php\/php8.3-fpm.sock/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.conf \
  && sed -i 's/listen = 9000/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/*conf \
  && sed -i 's/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/*conf \
+ && sed -i 's/listen = \/run\/php\/php8.3-fpm.sock/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/*conf \
+ && sed -i 's/listen = \/run\/php\/php-fpm.sock/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/*conf \
+ && sed -i 's/listen = \/var\/run\/php\/php8.3-fpm.sock/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/*conf \
  && rm -f /usr/local/etc/php-fpm.d/docker.conf
 
 # ---- Create socket directory ----
