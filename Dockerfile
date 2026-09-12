@@ -38,6 +38,9 @@ RUN composer install --no-dev --optimize-autoloader
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+# Run migrations automatically
+RUN php artisan migrate --force || true
+
 EXPOSE 8080
 
 CMD ["/usr/bin/supervisord"]
