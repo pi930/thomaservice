@@ -44,3 +44,7 @@ Route::get('/debug', function () {
         return $e->getMessage();
     }
 });
+Route::get('/ping', function () {
+    return 'pong';
+});
+
