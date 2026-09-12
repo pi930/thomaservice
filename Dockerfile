@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pdo_pgsql
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
-# force rebuild
 
 WORKDIR /var/www/html
 
@@ -26,15 +25,20 @@ RUN composer install --no-dev --optimize-autoloader
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# ---- Fix PHP-FPM listen directives ----
+# On remplace TOUTES les formes possibles de "listen"
 RUN sed -i 's/listen = 9000/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/www.conf \
+ && sed -i 's/listen=9000/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/www.conf \
  && sed -i 's/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/www.conf \
  && sed -i 's/listen = 9000/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.conf \
  && sed -i 's/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.conf \
  && sed -i 's/listen = 9000/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/*conf \
  && sed -i 's/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g' /usr/local/etc/php-fpm.d/*conf \
  && rm -f /usr/local/etc/php-fpm.d/docker.conf
- 
- RUN mkdir -p /var/run/php && chown -R www-data:www-data /var/run/php
+
+# ---- Create socket directory ----
+RUN mkdir -p /var/run/php && chown -R www-data:www-data /var/run/php
 
 EXPOSE 8080
 
