@@ -19,6 +19,18 @@ WORKDIR /var/www/html
 
 COPY . .
 
+# Fix Laravel storage permissions
+RUN chown -R www-data:www-data storage bootstrap/cache \
+ && chmod -R 775 storage bootstrap/cache
+
+RUN chmod -R 777 /tmp
+
+# Ensure Laravel storage subdirectories exist
+RUN mkdir -p storage/framework/views \
+ && mkdir -p storage/framework/cache \
+ && chown -R www-data:www-data storage \
+ && chmod -R 775 storage
+
 COPY --from=node_builder /app/public ./public
 
 RUN composer install --no-dev --optimize-autoloader
