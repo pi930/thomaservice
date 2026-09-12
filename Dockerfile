@@ -38,9 +38,11 @@ RUN composer install --no-dev --optimize-autoloader
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Run migrations automatically
-RUN php artisan migrate --force || true
+# ---- ENTRYPOINT (migrations at runtime) ----
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 EXPOSE 8080
 
-CMD ["/usr/bin/supervisord"]
+CMD ["docker-entrypoint.sh"]
+
