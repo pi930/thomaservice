@@ -27,6 +27,8 @@ RUN composer install --no-dev --optimize-autoloader
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+RUN sed -i 's/listen = 9000/listen = \/var\/run\/php-fpm.sock/' /usr/local/etc/php-fpm.d/www.conf
+
 EXPOSE 8080
 
 CMD ["/usr/bin/supervisord"]
