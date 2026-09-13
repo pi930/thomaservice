@@ -58,28 +58,50 @@
         display: block;
     }
 
-    /* Responsive smartphone */
+    /* ⭐ Responsive smartphone amélioré */
     @media(max-width: 800px){
-        .calendar-grid {
-            grid-template-columns: repeat(2, 1fr);
+
+        .calendar-wrapper {
+            padding: 20px 10px;
         }
 
+        .calendar-header h2 {
+            font-size: 22px !important;
+            text-align: center;
+            width: 100%;
+        }
+
+        .calendar-header div {
+            font-size: 18px !important;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Grille → 2 colonnes */
+        .calendar-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 15px !important;
+        }
+
+        /* Cases plus grandes et lisibles */
         .day-cell {
-            min-height: 100px;
-            padding: 12px;
+            min-height: 140px !important;
+            padding: 14px !important;
         }
 
         .day-number {
-            font-size: 20px;
+            font-size: 22px !important;
         }
 
         .day-label {
-            font-size: 14px;
+            font-size: 15px !important;
         }
 
+        /* Événements plus lisibles */
         .event {
-            font-size: 15px;
-            padding: 10px;
+            font-size: 16px !important;
+            padding: 10px !important;
+            margin-top: 10px !important;
         }
     }
 </style>

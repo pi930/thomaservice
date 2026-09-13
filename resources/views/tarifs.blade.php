@@ -1,6 +1,83 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+/* Images fluides */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive global */
+@media(max-width: 900px) {
+
+    /* Tous les conteneurs flex deviennent verticaux */
+    div[style*="display:flex"] {
+        flex-direction: column !important;
+        gap: 30px !important;
+        text-align: center !important;
+    }
+
+    /* Largeurs forcées → full width */
+    div[style*="width:50%"],
+    div[style*="width:40%"],
+    div[style*="width:55%"],
+    div[style*="width:33%"],
+    div[style*="width:66%"] {
+        width: 100% !important;
+    }
+
+    /* Titres */
+    h1, h2, h3 {
+        font-size: 26px !important;
+        text-align: center !important;
+    }
+
+    /* Paragraphes */
+    p {
+        font-size: 18px !important;
+        line-height: 1.6 !important;
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Boutons */
+    a, button {
+        width: 100% !important;
+        display: block !important;
+        text-align: center !important;
+        margin-top: 10px !important;
+    }
+
+    /* TABLEAUX RESPONSIVE */
+    table {
+        width: 100% !important;
+        display: block !important;
+        overflow-x: auto !important;
+    }
+
+    th, td {
+        font-size: 18px !important;
+        padding: 12px !important;
+        text-align: left !important;
+    }
+
+    /* Photos fixes → hauteur réduite */
+    img[style*="height:350px"],
+    img[style*="height:260px"],
+    img[style*="height:420px"] {
+        height: 240px !important;
+        object-fit: cover !important;
+    }
+
+    /* Footer */
+    div[style*="text-align:center"] p {
+        text-align: center !important;
+    }
+}
+</style>
+
 
 {{-- BLOC GRIS CLAIR : TARIFS & CESU --}}
 <div style="width:100%; background:#f2f2f2; padding:60px 0; text-align:center;">

@@ -12,6 +12,7 @@
             background: #f5f7fb;
         }
 
+        /* NAVIGATION */
         .main-nav {
             max-width: 1200px;
             margin: 0 auto;
@@ -33,37 +34,55 @@
             font-weight: 600;
         }
 
-       .main-nav a.active {
-    background: #1f3b57;
-    color: white;
-    border-color: #1f3b57;
-}
+        .main-nav a.active {
+            background: #1f3b57;
+            color: white;
+            border-color: #1f3b57;
+        }
 
+        /* IMAGE HEADER RESPONSIVE */
+        .header-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+        }
 
         @media(max-width: 768px){
             .main-nav a {
                 flex: 1 1 calc(50% - 10px);
                 text-align: center;
             }
+
+            .header-img {
+                height: 180px !important;
+            }
         }
 
+        /* CONTENU */
         .page-content {
             max-width: 1200px;
             margin: 30px auto;
             padding: 0 20px 40px;
         }
+
+        @media(max-width: 768px){
+            .page-content {
+                padding: 0 15px 30px;
+            }
+        }
     </style>
 </head>
 <body>
 
-{{-- PHOTO FULL WIDTH MAIS PLUS PETITE --}}
+{{-- PHOTO FULL WIDTH --}}
 <div style="width:100%; overflow:hidden;">
     <img src="{{ asset('Documents/Screenshot 2026-09-09 at 22-20-58 Accueil - Éditeur - Webador.png') }}"
          alt="Header Thomaservice"
-         style="width:100%; height:260px; object-fit:cover; display:block;">
+         class="header-img">
 </div>
 
-{{-- MENU EN DESSOUS DE LA PHOTO --}}
+{{-- MENU --}}
 <nav class="main-nav">
     <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">
         Accueil
@@ -82,7 +101,6 @@
     </a>
 </nav>
 
-{{-- ⭐⭐ C’EST ÇA QUI MANQUAIT ⭐⭐ --}}
 <main class="page-content">
     @yield('content')
 </main>

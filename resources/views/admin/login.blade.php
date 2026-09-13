@@ -12,8 +12,9 @@
         box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
 
-    /* Adaptation smartphone */
+    /* Responsive smartphone */
     @media(max-width: 600px){
+
         .login-wrapper {
             margin: 20px;
             padding: 25px;
@@ -21,17 +22,31 @@
         }
 
         .login-wrapper h2 {
-            font-size: 22px !important;
+            font-size: 24px !important;
+            text-align: center !important;
+        }
+
+        .login-wrapper label {
+            font-size: 18px !important;
         }
 
         .login-wrapper input {
-            font-size: 16px !important;
+            font-size: 18px !important;
             padding: 14px !important;
+            width: 100% !important;
         }
 
         .login-wrapper button {
-            font-size: 17px !important;
+            font-size: 18px !important;
             padding: 14px !important;
+            width: 100% !important;
+            text-align: center !important;
+        }
+
+        /* Message d’erreur */
+        .login-wrapper p {
+            font-size: 16px !important;
+            text-align: center !important;
         }
     }
 </style>

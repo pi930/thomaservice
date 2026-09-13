@@ -52,26 +52,12 @@
 
     /* Responsive smartphone */
     @media(max-width: 800px){
+
         .admin-wrapper {
             padding: 20px 10px;
         }
 
-        table, thead, tbody, th, td, tr {
-            display: block;
-        }
-
-        th {
-            position: sticky;
-            top: 0;
-            font-size: 16px;
-        }
-
-        td {
-            border-bottom: none;
-            padding: 12px 8px;
-            font-size: 16px;
-        }
-
+        /* Liens admin → full width */
         .admin-links a,
         .admin-links button {
             width: 100%;
@@ -80,17 +66,58 @@
             padding: 14px;
         }
 
+        /* Tableau en mode carte */
+        table, thead, tbody, th, td, tr {
+            display: block;
+            width: 100%;
+        }
+
+        thead {
+            display: none;
+        }
+
+        tr {
+            margin-bottom: 20px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        td {
+            border-bottom: none;
+            padding: 12px 8px;
+            font-size: 16px;
+        }
+
+        /* Champs formulaire dans tableau */
         input[type="datetime-local"] {
             font-size: 16px;
             padding: 12px;
+            width: 100%;
         }
 
         label {
             font-size: 16px;
+            display: block;
+            margin-top: 10px;
         }
 
-        button {
-            font-size: 16px !important;
+        /* Bouton Mettre à jour */
+        td button {
+            width: 100%;
+            font-size: 17px !important;
+            padding: 14px !important;
+            margin-top: 12px;
+        }
+
+        /* Lien contacter */
+        td a {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 17px;
+            margin-top: 10px;
         }
     }
 </style>

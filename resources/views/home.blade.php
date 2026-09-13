@@ -3,6 +3,92 @@
 @section('title', 'Accueil')
 
 @section('content')
+<style>
+/* Images fluides */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Flex → colonne sur mobile */
+@media(max-width: 900px) {
+
+    /* Tous les conteneurs flex deviennent verticaux */
+    div[style*="display:flex"] {
+        flex-direction: column !important;
+        gap: 25px !important;
+    }
+
+    /* Largeurs forcées → deviennent full width */
+    div[style*="width:33%"],
+    div[style*="width:40%"],
+    div[style*="width:55%"],
+    div[style*="width:66%"],
+    div[style*="width:50%"] {
+        width: 100% !important;
+    }
+
+    /* Titres */
+    h1, h2, h3 {
+        text-align: center !important;
+        font-size: 26px !important;
+    }
+
+    /* Paragraphes */
+    p {
+        font-size: 18px !important;
+        line-height: 1.6 !important;
+        text-align: center;
+    }
+
+    /* Boutons */
+    a, button {
+        width: 100% !important;
+        text-align: center !important;
+        display: block !important;
+        margin-top: 10px !important;
+    }
+
+    /* Formulaire */
+    form label {
+        font-size: 18px !important;
+    }
+
+    form input,
+    form textarea {
+        font-size: 18px !important;
+        padding: 14px !important;
+        width: 100% !important;
+    }
+
+    /* Photo bannière */
+    img[style*="height:420px"] {
+        height: 260px !important;
+    }
+
+    /* Colonnes 3 services → verticales */
+    div[style*="flex-wrap:nowrap"] {
+        flex-wrap: wrap !important;
+    }
+
+    /* Carrés témoignages */
+    div[style*="width:33%"] {
+        width: 100% !important;
+    }
+
+    /* Photo + texte (parcours) */
+    div[style*="width:40%"],
+    div[style*="width:55%"] {
+        width: 100% !important;
+    }
+
+    /* Footer */
+    footer p {
+        text-align: center !important;
+    }
+}
+</style>
+
 
 {{-- BANNIÈRE PHOTO FULL WIDTH AVEC TEXTE À GAUCHE --}}
 <div style="width:100%; position:relative;">
