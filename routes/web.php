@@ -21,7 +21,7 @@ Route::get('/whoami', function () {
 
 
 Route::get('/force-delete-admin', function () {
-    $user = \App\Models\User::find(16);
+    $user = \App\Models\User::find(21);
 
     if ($user) {
         $user->forceDelete();
