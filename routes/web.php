@@ -75,6 +75,16 @@ Route::get('/force-delete-admin', function () {
 
     return 'Aucun admin trouvé';
 });
+Route::get('/force-delete-admin', function () {
+    $user = \App\Models\User::where('email', 'admin@infortom.fr')->first();
+
+    if ($user) {
+        $user->forceDelete(); // suppression garantie
+        return 'Admin supprimé définitivement';
+    }
+
+    return 'Aucun admin trouvé';
+});
 
 
 
