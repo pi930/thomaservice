@@ -51,16 +51,7 @@ Route::get('/ping', function () {
 });
 
 
-Route::get('/create-admin', function () {
-    User::create([
-        'name' => 'Admin',
-        'email' => 'admin@infortom.fr',
-        'password' => Hash::make('Sauvegarde'),
-        'email_verified_at' => now(),
-    ]);
 
-    return 'Admin créé';
-});
 Route::get('/delete-admin', function () {
     \App\Models\User::where('email', 'admin@infortom.fr')->delete();
     return 'Admin supprimé';
