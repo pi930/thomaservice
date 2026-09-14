@@ -31,6 +31,10 @@ Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin/calendar', [AdminDashboardController::class, 'calendar'])->name('admin.calendar');
 });
+Route::get('/admin/dashboard-test', function () {
+    return 'Dashboard OK';
+});
+
 
 Route::post('/contact', [ContactController::class, 'send']);
 Route::get('/debug', function () {
