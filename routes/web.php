@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
+Route::get('/list-users', function () {
+    return \App\Models\User::all();
+});
+
+
 Route::post('/logout', function () {
     Auth::logout();
     return redirect('/connexion');
