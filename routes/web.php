@@ -6,6 +6,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminDashboardController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 Route::post('/logout', function () {
     Auth::logout();
@@ -47,8 +49,7 @@ Route::get('/debug', function () {
 Route::get('/ping', function () {
     return 'pong';
 });
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+
 
 Route::get('/create-admin', function () {
     User::create([
@@ -60,5 +61,10 @@ Route::get('/create-admin', function () {
 
     return 'Admin créé';
 });
+Route::get('/delete-admin', function () {
+    \App\Models\User::where('email', 'admin@infortom.fr')->delete();
+    return 'Admin supprimé';
+});
+
 
 
