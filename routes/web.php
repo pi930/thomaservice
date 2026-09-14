@@ -47,4 +47,18 @@ Route::get('/debug', function () {
 Route::get('/ping', function () {
     return 'pong';
 });
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+
+Route::get('/create-admin', function () {
+    User::create([
+        'name' => 'Admin',
+        'email' => 'admin@infortom.fr',
+        'password' => Hash::make('Sauvegarde'),
+        'email_verified_at' => now(),
+    ]);
+
+    return 'Admin créé';
+});
+
 
