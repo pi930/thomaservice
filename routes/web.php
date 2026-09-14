@@ -88,10 +88,12 @@ Route::get('/create-admin', function () {
         'email' => 'admin@infortom.fr',
         'password' => Hash::make('Sauvegarde'),
         'email_verified_at' => now(),
+        'is_admin' => 1, // ← OBLIGATOIRE
     ]);
 
     return 'Admin créé';
 });
+
 
 
 
