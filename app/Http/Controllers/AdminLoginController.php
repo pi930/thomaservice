@@ -12,24 +12,25 @@ class AdminLoginController extends Controller
         return view('admin.login');
     }
 
-    public function login(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => 'required',
-            'password' => 'required'
-        ]);
+   public function login(Request $request)
+{
+    $credentials = $request->validate([
+        'email' => 'required',
+        'password' => 'required'
+    ]);
 
-        if (Auth::attempt($credentials)) {
+    if (Auth::attempt($credentials)) {
 
-            if (auth()->user()->is_admin == 1) {
-                return redirect('/admin/dashboard');
-            }
-
-            Auth::logout();
-            return back()->withErrors(['email' => 'Accès réservé à l’administrateur.']);
+        if (auth()->user()->is_admin) {
+            return redirect('/admin/dashboard');
         }
 
-        return back()->withErrors(['email' => 'Identifiants incorrects.']);
+        Auth::logout();
+        return back()->withErrors(['email' => 'Accès réservé à l’administrateur.']);
     }
+
+    return back()->withErrors(['email' => 'Identifiants incorrects.']);
+}
+
 }
 
