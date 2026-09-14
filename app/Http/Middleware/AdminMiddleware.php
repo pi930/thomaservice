@@ -6,13 +6,18 @@ use Closure;
 
 class AdminMiddleware
 {
-    public function handle($request, Closure $next)
-    {
-        if (!auth()->check() || auth()->user()->is_admin !== 1) {
-            abort(403);
-        }
-
-        return $next($request);
+   public function handle($request, Closure $next)
+{
+    if (!auth()->check()) {
+        return redirect()->route('login');
     }
+
+    if (!auth()->user()->is_admin) {
+        abort(403, 'Accès refusé');
+    }
+
+    return $next($request);
+}
+
 }
 
