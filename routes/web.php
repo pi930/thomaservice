@@ -9,6 +9,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
+Route::get('/force-delete-admin', function () {
+    $user = \App\Models\User::find(14);
+
+    if ($user) {
+        $user->forceDelete();
+        return 'Admin supprimé définitivement';
+    }
+
+    return 'Aucun admin trouvé';
+});
+
 Route::get('/list-users', function () {
     return \App\Models\User::all();
 });
