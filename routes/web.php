@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
+Route::get('/whoami', function () {
+    return [
+        'app_env' => config('app.env'),
+        'app_url' => config('app.url'),
+        'db_host' => config('database.connections.pgsql.host'),
+        'db_database' => config('database.connections.pgsql.database'),
+    ];
+});
+
 
 Route::get('/force-delete-admin', function () {
     $user = \App\Models\User::find(14);
