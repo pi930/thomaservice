@@ -33,7 +33,7 @@ RUN mkdir -p storage/framework/views \
 
 COPY --from=node_builder /app/public ./public
 
-RUN composer install --no-dev --optimize-autoloader --no-cache
+RUN composer update --no-dev --optimize-autoloader
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
