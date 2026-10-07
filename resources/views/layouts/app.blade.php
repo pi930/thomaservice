@@ -70,7 +70,7 @@
 
 {{-- PHOTO FULL WIDTH --}}
 <header style="width:100%; overflow:hidden;">
-    <img src="{{ asset('Documents/Screenshot 2026-09-09 at 22-20-58 Accueil - Éditeur - Webador.png') }}"
+    <img src="{{ asset('Documents/header.png') }}"
          alt="Header Thomaservice"
          class="header-img">
 </header>

@@ -43,9 +43,9 @@ img {
 
     /* Boutons */
     a, button {
-        width: 100% !important;
+        [style*="background"]
         text-align: center !important;
-        display: block !important;
+        
         margin-top: 10px !important;
     }
 
@@ -94,7 +94,7 @@ img {
 <div style="
     width:100%;
     min-height:420px;
-    background-image:linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('{{ asset('Documents/Screenshot 2026-09-09 at 23-10-57 Accueil - Éditeur - Webador.png') }}');
+    background-image:linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('{{ asset('Documents/banniere.png') }}');
     background-size:cover;
     background-position:center;
     display:grid;
@@ -187,7 +187,7 @@ img {
 
         {{-- COLONNE 1 --}}
         <div style="width:33%; text-align:center;">
-            <img src="{{ asset('Documents/Screenshot 2026-09-09 at 22-32-03 Accueil - Éditeur - Webador.png') }}"
+            <img src="{{ asset('Documents/service-1.png') }}"
                  style="width:100%; height:180px; object-fit:cover; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
 
             <h3 style="color:#66aaff; font-size:26px; margin-top:15px;">
@@ -206,7 +206,7 @@ img {
 
         {{-- COLONNE 2 --}}
         <div style="width:33%; text-align:center;">
-            <img src="{{ asset('Documents/Screenshot 2026-09-09 at 22-38-42 Accueil - Éditeur - Webador.png') }}"
+            <img src="{{ asset('Documents/service-2.png') }}"
                  style="width:100%; height:180px; object-fit:cover; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
 
             <h3 style="color:#66aaff; font-size:26px; margin-top:15px;">
@@ -225,7 +225,7 @@ img {
 
         {{-- COLONNE 3 --}}
         <div style="width:33%; text-align:center;">
-            <img src="{{ asset('Documents/Screenshot 2026-09-09 at 22-44-00 Accueil - Éditeur - Webador.png') }}"
+            <img src="{{ asset('Documents/service-3.png') }}"
                  style="width:100%; height:180px; object-fit:cover; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
 
             <h3 style="color:#66aaff; font-size:26px; margin-top:15px;">
@@ -264,7 +264,7 @@ img {
 
         {{-- PHOTO À GAUCHE --}}
         <div style="width:40%;">
-            <img src="{{ asset('Documents/Screenshot 2026-09-09 at 23-20-15 Accueil - Éditeur - Webador.png') }}"
+            <img src="{{ asset('Documents/histoire.png') }}"
                  style="width:100%; height:350px; object-fit:cover; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
         </div>
 
@@ -309,7 +309,7 @@ img {
 </div>
 {{-- PHOTO FULL WIDTH ENTRE LES BLOCS --}}
 <div style="width:100%; margin:20px 0;">
-    <img src="{{ asset('Documents/Screenshot 2026-09-09 at 23-35-46 Accueil - Éditeur - Webador.png') }}"
+    <img src="{{ asset('Documents/bandeau.png') }}"
          style="width:100%; height:350px; object-fit:cover; display:block;">
 </div>
 {{-- BLOC 3 CARRÉS BLANCS AVEC ROND BLEU ET GUILLEMETS --}}
@@ -561,9 +561,6 @@ img {
     <p style="color:#66aaff; font-size:16px; font-weight:bold; margin:0;">
         © 2026 Thomaservice
     </p>
-</div>
-
-
 </div>
 
 @endsection
