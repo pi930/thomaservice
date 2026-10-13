@@ -9,8 +9,9 @@ class AdminMiddleware
    public function handle($request, Closure $next)
 {
     if (!auth()->check()) {
-        return redirect()->route('login');
-    }
+    return redirect()->route('admin.login');
+}
+
 
     if (!auth()->user()->is_admin) {
         abort(403, 'Accès refusé');
